@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS visitor(
+    id int PRIMARY KEY,
+    name VARCHAR(200) NOT NULL ,
+    reference VARCHAR(200) NOT NULL
+)
