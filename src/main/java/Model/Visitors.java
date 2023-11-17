@@ -7,10 +7,6 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class Visitors {
-    private int id;
-    private String name;
+public class Visitors extends  User{
     private String reference;
-
-
 }
