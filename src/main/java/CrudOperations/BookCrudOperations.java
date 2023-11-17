@@ -2,7 +2,7 @@ package CrudOperations;
 
 import Interface.CrudOperations;
 
-import java.awt.print.Book;
+import Model.Book;
 import java.util.List;
 
 public class BookCrudOperations implements CrudOperations<Book> {
