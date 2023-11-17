@@ -1,7 +1,7 @@
 package DatabaseConfig;
 
 public class DBSettings {
-    public String url = System.getenv("url");
-    public String user= System.getenv("user");
-    public String password = System.getenv("password");
+    public static String url = System.getenv("url");
+    public static String user= System.getenv("user");
+    public static String password = System.getenv("password");
 }
