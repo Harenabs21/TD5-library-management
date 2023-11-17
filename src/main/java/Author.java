@@ -1,14 +1,14 @@
-public class Authors {
+public class Author {
     private int id;
     private String name;
     private char sex;
 
-    public Authors(int id, String name, char sex) {
+    public Author(int id, String name, char sex) {
         this.id = id;
         this.name = name;
         this.sex = sex;
     }
-    public Authors(){
+    public Author(){
 
     }
 
