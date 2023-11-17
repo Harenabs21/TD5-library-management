@@ -1,15 +1,34 @@
 package DatabaseConfig;
 
-import lombok.Getter;
-import org.apache.commons.dbcp2.BasicDataSource;
- @Getter
-public class DatabaseManager {
-    private static final BasicDataSource dataSource = new BasicDataSource();
+import java.sql.*;
 
-    static{
-        dataSource.setUrl(DBSettings.url);
-        dataSource.setUsername(DBSettings.user);
-        dataSource.setPassword(DBSettings.password);
+public class DatabaseManager {
+    private static DatabaseManager instance;
+    private final Connection connection;
+
+    private DatabaseManager() {
+        try {
+            connection = DriverManager.getConnection(DBSettings.url , DBSettings.user, DBSettings.password);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static DatabaseManager getInstance() {
+        if (instance == null) {
+            instance = new DatabaseManager();
+        }
+        return instance;
+    }
+
+    public PreparedStatement getPreparedStatement(String sql) {
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return preparedStatement;
     }
 
 }
