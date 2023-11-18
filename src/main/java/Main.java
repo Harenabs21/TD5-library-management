@@ -1,18 +1,35 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import CrudOperations.AuthorCrudOperations;
+import CrudOperations.BookCrudOperations;
+import CrudOperations.VisitorsCrudOperations;
+import Model.Author;
+import Model.Book;
+import Model.Visitors;
+
+import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws SQLException {
-        String url = System.getenv("url");
-        String user= System.getenv("user");
-        String password = System.getenv("password");
+    public static void main(String[] args)  {
+        BookCrudOperations bookCrudOperations = new BookCrudOperations();
+        AuthorCrudOperations authorCrudOperations = new AuthorCrudOperations();
+        VisitorsCrudOperations visitorsCrudOperations = new VisitorsCrudOperations();
 
-        try {
-            Connection connection = DriverManager.getConnection(url,user,password);
-            System.out.println(connection);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        // Tester la méthode findAll pour la table book
+        List<Book> allBooks = bookCrudOperations.findAll();
+        System.out.println("List of books :");
+        for (Book book : allBooks) {
+            System.out.println(book);
         }
+        List<Author> allAuthors = authorCrudOperations.findAll();
+        System.out.println("List of authors");
+        for(Author author : allAuthors){
+            System.out.println(author);
+        }
+        List<Visitors> allVisitors = visitorsCrudOperations.findAll();
+        System.out.println("List of subscribers");
+        for(Visitors visitors : allVisitors){
+            System.out.println(visitors);
+        }
+
+
     }
 }
