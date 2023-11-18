@@ -4,11 +4,13 @@ import DatabaseConfig.DatabaseManager;
 import Interface.CrudOperations;
 
 import Model.Book;
+import lombok.NoArgsConstructor;
+
 import java.sql.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+@NoArgsConstructor
 public class BookCrudOperations implements CrudOperations<Book> {
     private static final DatabaseManager databaseManager = DatabaseManager.getInstance();
     @Override

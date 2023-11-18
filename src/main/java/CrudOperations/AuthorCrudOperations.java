@@ -3,13 +3,14 @@ package CrudOperations;
 import DatabaseConfig.DatabaseManager;
 import Interface.CrudOperations;
 import Model.Author;
+import lombok.NoArgsConstructor;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+@NoArgsConstructor
 public class AuthorCrudOperations implements CrudOperations<Author> {
     private static final DatabaseManager databaseManager = DatabaseManager.getInstance();
     @Override
