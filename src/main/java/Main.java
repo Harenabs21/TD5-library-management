@@ -5,6 +5,7 @@ import Model.Author;
 import Model.Book;
 import Model.Visitors;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -30,6 +31,11 @@ public class Main {
             System.out.println(visitors);
         }
 
-
+        List<Author> authorToSave = Arrays.asList(
+            new Author(4,"Aristote",'M'),
+            new Author(5,"Bella Poetry",'F'),
+            new Author(6,"Benjamin Franklin",'M')
+        );
+        authorCrudOperations.saveAll(authorToSave);
     }
 }
