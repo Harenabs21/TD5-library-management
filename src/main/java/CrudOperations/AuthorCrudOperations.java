@@ -43,13 +43,14 @@ public class AuthorCrudOperations implements CrudOperations<Author> {
                 statement.setString(2,author.getName());
                 statement.setString(3,String.valueOf(author.getSex()));
                 statement.addBatch();
-                int[] affectedRows = statement.executeBatch();
-                if(affectedRows.length == toSave.size()){
-                    System.out.println("All authors successfully backed up");
-                }
-                else{
-                    System.out.println("Some authors could not be saved.");
-                }
+
+            }
+            int[] affectedRows = statement.executeBatch();
+            if(affectedRows.length == toSave.size()){
+                System.out.println("All authors successfully backed up");
+            }
+            else{
+                System.out.println("Some authors could not be saved.");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

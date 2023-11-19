@@ -48,13 +48,14 @@ public class BookCrudOperations implements CrudOperations<Book> {
                 statement.setString(4,book.getTopic().name());
                 statement.setDate(5,book.getReleaseDate());
                 statement.addBatch();
-                int[] affectedRows = statement.executeBatch();
-                if(affectedRows.length == toSave.size()){
-                    System.out.println("All books successfully backed up");
-                }
-                else{
-                    System.out.println("Some books could not be saved.");
-                }
+
+            }
+            int[] affectedRows = statement.executeBatch();
+            if(affectedRows.length == toSave.size()){
+                System.out.println("All books successfully backed up");
+            }
+            else{
+                System.out.println("Some books could not be saved.");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

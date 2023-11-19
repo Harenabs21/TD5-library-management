@@ -43,13 +43,14 @@ public class VisitorsCrudOperations implements CrudOperations<Visitors> {
                 statement.setString(2,visitors.getName());
                 statement.setString(3,visitors.getReference());
                 statement.addBatch();
-                int[] affectedRows = statement.executeBatch();
-                if(affectedRows.length == toSave.size()){
-                    System.out.println("All visitors successfully backed up");
-                }
-                else{
-                    System.out.println("Some visitors could not be saved.");
-                }
+
+            }
+            int[] affectedRows = statement.executeBatch();
+            if(affectedRows.length == toSave.size()){
+                System.out.println("All visitors successfully backed up");
+            }
+            else{
+                System.out.println("Some visitors could not be saved.");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
