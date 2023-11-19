@@ -11,8 +11,11 @@ public class Book {
     private int id;
     private String bookName;
     private int pageNumbers;
-    private String topic;
+    private Topic topic;
     private Date releaseDate;
 
-
+    // Enum pour les différents topics
+    public enum Topic {
+        ROMANCE, COMEDY, OTHER
+    }
 }

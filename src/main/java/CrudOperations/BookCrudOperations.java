@@ -24,7 +24,8 @@ public class BookCrudOperations implements CrudOperations<Book> {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 int pageNumber = resultSet.getInt("page_number");
-                String topic = resultSet.getString("topic");
+                String topicString = resultSet.getString("topic");
+                Book.Topic topic = Book.Topic.valueOf(topicString);
                 Date releaseDate = resultSet.getDate("release_date");
                 Book books = new Book(id,name,pageNumber,topic,releaseDate);
                 listOfBooks.add(books);
@@ -44,7 +45,7 @@ public class BookCrudOperations implements CrudOperations<Book> {
                 statement.setInt(1,book.getId());
                 statement.setString(2,book.getBookName());
                 statement.setInt(3,book.getPageNumbers());
-                statement.setString(4,book.getTopic());
+                statement.setString(4,book.getTopic().name());
                 statement.setDate(5,book.getReleaseDate());
                 statement.addBatch();
                 int[] affectedRows = statement.executeBatch();
@@ -69,7 +70,7 @@ public class BookCrudOperations implements CrudOperations<Book> {
             statement.setInt(1,toSave.getId());
             statement.setString(2,toSave.getBookName());
             statement.setInt(3,toSave.getPageNumbers());
-            statement.setString(4,toSave.getTopic());
+            statement.setString(4,toSave.getTopic().name());
             statement.setDate(5,toSave.getReleaseDate());
             statement.executeUpdate();
             return toSave;
